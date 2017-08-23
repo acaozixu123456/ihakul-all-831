@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	   xmlns= "http://www.springframework.org/schema/beans"
+	   xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="
+       		http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/data/mongo 
+            http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+	
+	<!--credentials的配置形式是：用户名:密码@默认数据库-->
+		<!--credentials的配置形式是：用户名:密码@默认数据库-->
+	<mongo:mongo-client id="mongoClient" host="${mongo.host}" port="${mongo.port}" credentials="${mongo.username}:${mongo.password}@${mongo.dbname}">
+		
+		<mongo:client-options 
+			connections-per-host="${mongo.connections_per_host}" 
+			threads-allowed-to-block-for-connection-multiplier="${mongo.threads_allowed_to_block_for_connection_multiplier}" 
+			connect-timeout="${mongo.connect_timeout}" 
+			max-wait-time="${mongo.max_wait_time}" 
+			socket-timeout="${mongo.socket_timeout}" />
+		
+	</mongo:mongo-client>
+	
+	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.dbname}" mongo-ref="mongoClient" />
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+	
+	<!--实体映射自动扫描注入的包-->
+    <mongo:mapping-converter>
+        <mongo:custom-converters base-package="com.xiaoai.entity" />
+    </mongo:mapping-converter>
+
+</beans>

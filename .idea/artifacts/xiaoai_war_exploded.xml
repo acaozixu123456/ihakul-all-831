@@ -107,7 +107,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="F:/eclipseWorkSpace/ihakul_server/target/ihakul_server/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/ihakul_server/target/ihakul_server/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="xiaoai/web/Web" />
     </root>
