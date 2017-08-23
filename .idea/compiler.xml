@@ -10,6 +10,7 @@
         <module name="xiaoai-bigData-dao" />
         <module name="xiaoai-bigData-interface" />
         <module name="xiaoai-bigData-service" />
+        <module name="xiaoai-common" />
         <module name="xiaoai-main-dao" />
         <module name="xiaoai-main-entity" />
         <module name="xiaoai-main-interface" />
@@ -17,13 +18,6 @@
         <module name="xiaoai-main-redis" />
         <module name="xiaoai-main-service" />
         <module name="xiaoai-ms-web" />
-        <module name="xiaoaica" />
-      </profile>
-      <profile name="Annotation profile for xiaoai-common" enabled="true">
-        <sourceOutputDir name="../../../eclipseWorkSpace/xiaoai-common/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../../eclipseWorkSpace/xiaoai-common/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="xiaoai-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

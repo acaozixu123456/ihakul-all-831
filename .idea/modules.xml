@@ -17,7 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-redis/xiaoai-main-redis.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-redis/xiaoai-main-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-service/xiaoai-main-service.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-service/xiaoai-main-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/xiaoai-ms-web/xiaoai-ms-web.iml" filepath="$PROJECT_DIR$/xiaoai-ms-web/xiaoai-ms-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xiaoaica/xiaoaica.iml" filepath="$PROJECT_DIR$/xiaoaica/xiaoaica.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-parent/xiaoai-parent.iml" filepath="$PROJECT_DIR$/xiaoai-parent/xiaoai-parent.iml" />
     </modules>
   </component>
 </project>

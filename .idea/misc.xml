@@ -17,13 +17,13 @@
         <option value="F:/eclipseWorkSpace/xiaoai-common/pom.xml" />
         <option value="F:/eclipseWorkSpace/xiaoai-ms-web/pom.xml" />
         <option value="F:/eclipseWorkSpace/xiaoai-main/pom.xml" />
-        <option value="$PROJECT_DIR$/xiaoaica/pom.xml" />
+        <option value="$PROJECT_DIR$/ihakul_server/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoai-bigData/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoai-common/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoai-main/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoai-ms-web/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoai-parent/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/xiaoai-CA/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.7" project-jdk-type="JavaSDK">
