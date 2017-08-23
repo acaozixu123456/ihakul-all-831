@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="haku-main-1">
+    <serverData>
+      <paths name="haku-main-1">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/ihakul_server" local="F:/eclipseWorkSpace/ihakul_server/target/ihakul_server" web="/ihakul_server" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="haku-main-2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/ihakul_server" local="F:/eclipseWorkSpace/ihakul_server/target/ihakul_server" web="/ihakul_server" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="haku-web">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/xiaoai-ms-web" local="F:/eclipseWorkSpace/xiaoai-ms-web/target/xiaoai-ms-web" web="/xiaoai-ms-web" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ihakul_server" />
+    <file type="web" url="file://$PROJECT_DIR$/xiaoai-bigData-service" />
+    <file type="web" url="file://$PROJECT_DIR$/xiaoai-CA" />
+    <file type="web" url="file://$PROJECT_DIR$/xiaoai-ms-web" />
+    <file type="web" url="file://$PROJECT_DIR$/xiaoaica" />
+    <type id="Spring" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="F:/eclipseWorkSpace/ihakul_server/pom.xml" />
+        <option value="F:/eclipseWorkSpace/xiaoai-bigData/pom.xml" />
+        <option value="F:/eclipseWorkSpace/xiaoai-bigData-service/pom.xml" />
+        <option value="F:/eclipseWorkSpace/xiaoai-common/pom.xml" />
+        <option value="F:/eclipseWorkSpace/xiaoai-ms-web/pom.xml" />
+        <option value="F:/eclipseWorkSpace/xiaoai-main/pom.xml" />
+        <option value="$PROJECT_DIR$/xiaoaica/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/xiaoai-CA/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="authenticationDatabase" value="haku" />
+          <option name="authenticationMechanism" value="SCRAM-SHA-1" />
+          <option name="connectOnIdeStartup" value="true" />
+          <option name="password" value="Haku12345678" />
+          <option name="serverUrls">
+            <list>
+              <option value="42.159.249.229:50107" />
+            </list>
+          </option>
+          <option name="sshTunnelingConfiguration">
+            <SshTunnelingConfiguration />
+          </option>
+          <option name="userDatabase" value="haku" />
+          <option name="username" value="haku_mongo_user" />
+        </ServerConfiguration>
+      </list>
+    </option>
+  </component>
+</project>

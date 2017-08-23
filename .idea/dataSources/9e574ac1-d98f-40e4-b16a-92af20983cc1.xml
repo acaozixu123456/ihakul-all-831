@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="xiaoi@hakumysql.mysqldb.chinacloudapi.cn">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="xiaoi">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <table id="6" parent="2" name="administrate"/>
+    <table id="7" parent="2" name="channel"/>
+    <table id="8" parent="2" name="datadictionary"/>
+    <table id="9" parent="2" name="family_user"/>
+    <table id="10" parent="2" name="familygroup"/>
+    <table id="11" parent="2" name="household"/>
+    <table id="12" parent="2" name="info"/>
+    <table id="13" parent="2" name="manufacturer"/>
+    <table id="14" parent="2" name="privilege"/>
+    <table id="15" parent="2" name="role"/>
+    <table id="16" parent="2" name="room"/>
+    <table id="17" parent="2" name="suggest"/>
+    <table id="18" parent="2" name="users"/>
+    <table id="19" parent="2" name="versions"/>
+    <table id="20" parent="2" name="xiaoaisession"/>
+    <table id="21" parent="2" name="xiaoi"/>
+    <table id="22" parent="2" name="xiaoilog"/>
+    <table id="23" parent="2" name="xiaoilogformysql"/>
+    <table id="24" parent="2" name="xiaoimac"/>
+    <table id="25" parent="2" name="xiaoimode"/>
+    <table id="26" parent="2" name="xiaoisms"/>
+    <table id="27" parent="2" name="xiaoismsmessage"/>
+    <table id="28" parent="2" name="xiaoitask"/>
+    <table id="29" parent="2" name="xiaoiurl"/>
+    <column id="30" parent="6" name="aid">
+      <Position>1</Position>
+      <Comment>管理员id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="6" name="aname">
+      <Position>2</Position>
+      <Comment>管理员名字</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="6" name="password">
+      <Position>3</Position>
+      <Comment>管理员登入密码</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="6" name="createdate">
+      <Position>4</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="6" name="loginLastTime">
+      <Position>5</Position>
+      <Comment>最后的登入时间</Comment>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="35" parent="6" name="loginNumber">
+      <Position>6</Position>
+      <Comment>登入次数</Comment>
+      <DataType>int(20)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="6" name="rid">
+      <Position>7</Position>
+      <Comment>角色id(1,高级管理员;2,普通管理员)</Comment>
+      <DataType>int(10)|0</DataType>
+      <DefaultExpression>&apos;2&apos;</DefaultExpression>
+    </column>
+    <column id="37" parent="6" name="realName">
+      <Position>8</Position>
+      <Comment>真实姓名</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="6" name="phoneNumber">
+      <Position>9</Position>
+      <Comment>手机号码</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="39" parent="6" name="sex">
+      <Position>10</Position>
+      <Comment>管理员性别</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <index id="40" parent="6" name="aid_r2">
+      <ColNames>rid</ColNames>
+    </index>
+    <key id="41" parent="6" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>aid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="6" name="aid_r2">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>role</RefTableName>
+      <RefColNames>rid</RefColNames>
+    </foreign-key>
+    <column id="43" parent="7" name="cid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="44" parent="7" name="chanName">
+      <Position>2</Position>
+      <Comment>频道名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="45" parent="7" name="chanNumber">
+      <Position>3</Position>
+      <Comment>频道号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="46" parent="7" name="groupId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="47" parent="7" name="ci_gid">
+      <ColNames>groupId</ColNames>
+    </index>
+    <key id="48" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="49" parent="7" name="ci_gid">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <column id="50" parent="8" name="id">
+      <Position>1</Position>
+      <Comment>自增ID</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="8" name="ddName">
+      <Position>2</Position>
+      <Comment>数据名字</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="52" parent="8" name="createTime">
+      <Position>3</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="53" parent="8" name="checkedType">
+      <Position>4</Position>
+      <Comment>是否已使用</Comment>
+      <DataType>int(2)|0</DataType>
+    </column>
+    <key id="54" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="9" name="id">
+      <Position>1</Position>
+      <Comment>自增id</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="9" name="groupId">
+      <Position>2</Position>
+      <Comment>家庭组id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="57" parent="9" name="userId">
+      <Position>3</Position>
+      <Comment>用户id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="58" parent="9" name="dna">
+      <Position>4</Position>
+      <Comment>创建标识</Comment>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <index id="59" parent="9" name="g_id">
+      <ColNames>groupId</ColNames>
+    </index>
+    <index id="60" parent="9" name="u_id">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="61" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="62" parent="9" name="g_id">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <foreign-key id="63" parent="9" name="u_id">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="64" parent="10" name="groupId">
+      <Position>1</Position>
+      <Comment>家庭组id(自增)</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="65" parent="10" name="groupName">
+      <Position>2</Position>
+      <Comment>家庭组名字</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="10" name="creationTime">
+      <Position>3</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="67" parent="10" name="groupNumber">
+      <Position>4</Position>
+      <Comment>家庭组编号</Comment>
+      <DataType>int(24) unsigned|0</DataType>
+    </column>
+    <column id="68" parent="10" name="state">
+      <Position>5</Position>
+      <Comment>国家</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="69" parent="10" name="city">
+      <Position>6</Position>
+      <Comment>城市</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="70" parent="10" name="district">
+      <Position>7</Position>
+      <Comment>街道</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="71" parent="10" name="groupPassword">
+      <Position>8</Position>
+      <Comment>绑定家庭组时的验证密码</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="72" parent="10" name="managerId">
+      <Position>9</Position>
+      <Comment>创建家庭组的用户ID</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+    </column>
+    <column id="73" parent="10" name="versionNumber">
+      <Position>10</Position>
+      <Comment>家庭组版本号</Comment>
+      <DataType>int(30) unsigned|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="74" parent="10" name="groupIp">
+      <Position>11</Position>
+      <Comment>家庭组IP</Comment>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <index id="75" parent="10" name="uk_groupNumber">
+      <ColNames>groupNumber</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>groupId
+groupName</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="77" parent="10" name="uk_groupNumber">
+      <ColNames>groupNumber</ColNames>
+      <UnderlyingIndexName>uk_groupNumber</UnderlyingIndexName>
+    </key>
+    <column id="78" parent="11" name="hid">
+      <Position>1</Position>
+      <Comment>家电id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="79" parent="11" name="classId">
+      <Position>2</Position>
+      <Comment>家电类别(1,普通;2,智能)</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="80" parent="11" name="brand">
+      <Position>3</Position>
+      <Comment>品牌</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="81" parent="11" name="model">
+      <Position>4</Position>
+      <Comment>型号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="82" parent="11" name="createTime">
+      <Position>5</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="83" parent="11" name="eaName">
+      <Position>6</Position>
+      <Comment>家电昵称</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="84" parent="11" name="groupId">
+      <Position>7</Position>
+      <Comment>家庭组id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="85" parent="11" name="roomId">
+      <Position>8</Position>
+      <Comment>房间id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="86" parent="11" name="eaNumber">
+      <Position>9</Position>
+      <Comment>家电编号</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="87" parent="11" name="prop">
+      <Position>10</Position>
+      <Comment>通讯参数，见链路协议</Comment>
+      <DataType>bigint(50)|0</DataType>
+    </column>
+    <column id="88" parent="11" name="stub">
+      <Position>11</Position>
+      <Comment>智能索引(Key)</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="89" parent="11" name="type">
+      <Position>12</Position>
+      <Comment>家电类型</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="90" parent="11" name="port">
+      <Position>13</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="91" parent="11" name="status">
+      <Position>14</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="92" parent="11" name="brandName">
+      <Position>15</Position>
+      <Comment>家电中文名称</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="93" parent="11" name="ah_bgb">
+      <ColNames>classId</ColNames>
+    </index>
+    <index id="94" parent="11" name="da_ffg">
+      <ColNames>groupId</ColNames>
+    </index>
+    <index id="95" parent="11" name="idx_eaNumber">
+      <ColNames>eaNumber</ColNames>
+    </index>
+    <index id="96" parent="11" name="nk_rid">
+      <ColNames>roomId</ColNames>
+    </index>
+    <key id="97" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>hid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="98" parent="11" name="da_ffg">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <foreign-key id="99" parent="11" name="nk_rid">
+      <ColNames>roomId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>room</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="100" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="12" name="content">
+      <Position>2</Position>
+      <Comment>公告文本内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="102" parent="12" name="creatTime">
+      <Position>3</Position>
+      <Comment>公告创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="103" parent="12" name="creator">
+      <Position>4</Position>
+      <Comment>创建者</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="104" parent="12" name="pushTime">
+      <Position>5</Position>
+      <Comment>定时推送时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="105" parent="12" name="pushState">
+      <Position>6</Position>
+      <Comment>推送状态(0:未推送，1：推送成功，2：推送失败)</Comment>
+      <DataType>int(1)|0</DataType>
+    </column>
+    <column id="106" parent="12" name="otherContent">
+      <Position>7</Position>
+      <Comment>公告其他内容，例如图片地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="107" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="108" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="109" parent="13" name="name">
+      <Position>2</Position>
+      <Comment>厂商名称</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="110" parent="13" name="creattime">
+      <Position>3</Position>
+      <Comment>注册时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="111" parent="13" name="code">
+      <Position>4</Position>
+      <Comment>厂商代码</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="112" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="113" parent="14" name="id">
+      <Position>1</Position>
+      <Comment>权限id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="114" parent="14" name="rid">
+      <Position>2</Position>
+      <Comment>角色id(角色表外键)</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="115" parent="14" name="priName">
+      <Position>3</Position>
+      <Comment>权限名字</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="116" parent="14" name="description">
+      <Position>4</Position>
+      <Comment>权限描述</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="117" parent="14" name="gh_rid">
+      <ColNames>rid</ColNames>
+    </index>
+    <key id="118" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="119" parent="14" name="gh_rid">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>role</RefTableName>
+      <RefColNames>rid</RefColNames>
+    </foreign-key>
+    <column id="120" parent="15" name="rid">
+      <Position>1</Position>
+      <Comment>角色id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="121" parent="15" name="rolename">
+      <Position>2</Position>
+      <Comment>角色名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="122" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>rid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="123" parent="16" name="id">
+      <Position>1</Position>
+      <Comment>房间id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="124" parent="16" name="roomName">
+      <Position>2</Position>
+      <Comment>房间名字</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="125" parent="16" name="createTime">
+      <Position>3</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="126" parent="16" name="groupId">
+      <Position>4</Position>
+      <Comment>家庭组id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="127" parent="16" name="roomNickName">
+      <Position>5</Position>
+      <Comment>房间昵称</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="128" parent="16" name="floor">
+      <Position>6</Position>
+      <Comment>房间楼层(默认 0)</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="129" parent="16" name="parentId">
+      <Position>7</Position>
+      <Comment>父节点标识</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="130" parent="16" name="roomNumber">
+      <Position>8</Position>
+      <Comment>房间编号</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="131" parent="16" name="robot">
+      <Position>9</Position>
+      <Comment>终端绑定</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="132" parent="16" name="creator">
+      <Position>10</Position>
+      <Comment>终端创建</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="133" parent="16" name="bn_roi">
+      <ColNames>groupId</ColNames>
+    </index>
+    <index id="134" parent="16" name="idx_roomNumber">
+      <ColNames>roomNumber</ColNames>
+    </index>
+    <key id="135" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="136" parent="16" name="bn_roi">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <column id="137" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="138" parent="17" name="suggestContext">
+      <Position>2</Position>
+      <DataType>varchar(4000)|0</DataType>
+    </column>
+    <column id="139" parent="17" name="userPhone">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="140" parent="17" name="createTime">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="141" parent="17" name="state">
+      <Position>5</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+    </column>
+    <key id="142" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="143" parent="18" name="userId">
+      <Position>1</Position>
+      <Comment>用户id(自增)</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="144" parent="18" name="userName">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="145" parent="18" name="userPassword">
+      <Position>3</Position>
+      <Comment>用户密码</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="146" parent="18" name="accessper">
+      <Position>4</Position>
+      <Comment>用户登入状态</Comment>
+      <DataType>int(10)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="147" parent="18" name="userPhoneNumber">
+      <Position>5</Position>
+      <Comment>手机号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="148" parent="18" name="userSex">
+      <Position>6</Position>
+      <Comment>用户性别</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="149" parent="18" name="createTime">
+      <Position>7</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="150" parent="18" name="loginLastTimes">
+      <Position>8</Position>
+      <Comment>最后登录时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="151" parent="18" name="loginLastIp">
+      <Position>9</Position>
+      <Comment>用户最后登录的IP</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="152" parent="18" name="jk_id">
+      <ColNames>loginLastIp</ColNames>
+    </index>
+    <key id="153" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="154" parent="19" name="id">
+      <Position>1</Position>
+      <Comment>版本id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="155" parent="19" name="versionName">
+      <Position>2</Position>
+      <Comment>版本名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="156" parent="19" name="versionNumber">
+      <Position>3</Position>
+      <Comment>版本号</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="157" parent="19" name="versionPackage">
+      <Position>4</Position>
+      <Comment>版本包名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="158" parent="19" name="upgradeClass">
+      <Position>5</Position>
+      <Comment>更新类容</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="159" parent="19" name="upgradeTime">
+      <Position>6</Position>
+      <Comment>更新时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="160" parent="19" name="versionType">
+      <Position>7</Position>
+      <Comment>平台类型(1,android;2,ios; 3,小艾;4,其它)</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="161" parent="19" name="versionUrl">
+      <Position>8</Position>
+      <Comment>文件地址</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="162" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="163" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="164" parent="20" name="gid">
+      <Position>2</Position>
+      <Comment>session全局id</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="165" parent="20" name="nid">
+      <Position>3</Position>
+      <Comment>session在本台服务器上的ID</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="166" parent="20" name="deviceId">
+      <Position>4</Position>
+      <Comment>客户端ID</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="167" parent="20" name="host">
+      <Position>5</Position>
+      <Comment>session绑定的服务器IP</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="168" parent="20" name="account">
+      <Position>6</Position>
+      <Comment>session绑定的账号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="169" parent="20" name="channel">
+      <Position>7</Position>
+      <Comment>终端设备类型</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="170" parent="20" name="deviceModel">
+      <Position>8</Position>
+      <Comment>终端设备型号</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="171" parent="20" name="clientVersion">
+      <Position>9</Position>
+      <Comment>终端应用版本</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="172" parent="20" name="systemVersion">
+      <Position>10</Position>
+      <Comment>终端系统版本</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="173" parent="20" name="bindTime">
+      <Position>11</Position>
+      <Comment>登录时间</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="174" parent="20" name="heartbeat">
+      <Position>12</Position>
+      <Comment>心跳时间</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="175" parent="20" name="longitude">
+      <Position>13</Position>
+      <Comment>经度</Comment>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="176" parent="20" name="latitude">
+      <Position>14</Position>
+      <Comment>维度</Comment>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="177" parent="20" name="location">
+      <Position>15</Position>
+      <Comment>位置</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="178" parent="20" name="apnsAble">
+      <Position>16</Position>
+      <Comment>apns推送状态</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="179" parent="20" name="status">
+      <Position>17</Position>
+      <Comment>状态</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="180" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="181" parent="21" name="xid">
+      <Position>1</Position>
+      <Comment>终端id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="182" parent="21" name="xname">
+      <Position>2</Position>
+      <Comment>终端名称</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="183" parent="21" name="state">
+      <Position>3</Position>
+      <Comment>在线状态(0,不在线;1,在线,2删除,3替换)</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="184" parent="21" name="xiaoNumber">
+      <Position>4</Position>
+      <Comment>终端编号</Comment>
+      <DataType>char(18)|0</DataType>
+    </column>
+    <column id="185" parent="21" name="groupId">
+      <Position>5</Position>
+      <Comment>家庭组的id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="186" parent="21" name="xiaoType">
+      <Position>6</Position>
+      <Comment>终端类型(1,普通;2时尚))</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+    </column>
+    <column id="187" parent="21" name="activationTime">
+      <Position>7</Position>
+      <Comment>激活时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="188" parent="21" name="xiaoIp">
+      <Position>8</Position>
+      <Comment>小艾ip</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="189" parent="21" name="mode">
+      <Position>9</Position>
+      <Comment>终端情景模式(10-标准模式；20-睡眠模式；30-离家模式)</Comment>
+      <DataType>smallint(10) unsigned|0</DataType>
+    </column>
+    <column id="190" parent="21" name="volume">
+      <Position>10</Position>
+      <Comment>扬声器输出音量(取值范围 1-100，当设置为-1 时，终端静音)</Comment>
+      <DataType>smallint(10) unsigned|0</DataType>
+    </column>
+    <index id="191" parent="21" name="idx_mode">
+      <ColNames>mode</ColNames>
+    </index>
+    <index id="192" parent="21" name="idx_state">
+      <ColNames>state</ColNames>
+    </index>
+    <index id="193" parent="21" name="uk_xiaoNumber">
+      <ColNames>xiaoNumber</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="194" parent="21" name="xv_hj">
+      <ColNames>groupId</ColNames>
+    </index>
+    <key id="195" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>xid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="196" parent="21" name="uk_xiaoNumber">
+      <ColNames>xiaoNumber</ColNames>
+      <UnderlyingIndexName>uk_xiaoNumber</UnderlyingIndexName>
+    </key>
+    <foreign-key id="197" parent="21" name="xv_hj">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <column id="198" parent="22" name="lid">
+      <Position>1</Position>
+      <Comment>日志id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="199" parent="22" name="usingDetails">
+      <Position>2</Position>
+      <Comment>使用详情</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="200" parent="22" name="userTime">
+      <Position>3</Position>
+      <Comment>使用时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="201" parent="22" name="xid">
+      <Position>4</Position>
+      <Comment>终端id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="202" parent="22" name="hid">
+      <Position>5</Position>
+      <Comment>家电id</Comment>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <index id="203" parent="22" name="ca_hid">
+      <ColNames>hid</ColNames>
+    </index>
+    <index id="204" parent="22" name="ca_xid">
+      <ColNames>xid</ColNames>
+    </index>
+    <key id="205" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="206" parent="22" name="ca_xid">
+      <ColNames>xid</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>xiaoi</RefTableName>
+      <RefColNames>xid</RefColNames>
+    </foreign-key>
+    <foreign-key id="207" parent="22" name="ca_hid">
+      <ColNames>hid</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>household</RefTableName>
+      <RefColNames>hid</RefColNames>
+    </foreign-key>
+    <column id="208" parent="23" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="209" parent="23" name="invokeTime">
+      <Position>2</Position>
+      <Comment>调用时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="210" parent="23" name="invokeGroupNumber">
+      <Position>3</Position>
+      <Comment>所属家庭组编号</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+    </column>
+    <column id="211" parent="23" name="invokeMethod">
+      <Position>4</Position>
+      <Comment>所调用的方法</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="212" parent="23" name="invokeXiaoNumber">
+      <Position>5</Position>
+      <Comment>所属小艾编号</Comment>
+      <DataType>char(18)|0</DataType>
+    </column>
+    <column id="213" parent="23" name="invokeUserName">
+      <Position>6</Position>
+      <Comment>所属用户</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="214" parent="23" name="invokeParams">
+      <Position>7</Position>
+      <Comment>调用方法的入参</Comment>
+      <DataType>mediumtext|0</DataType>
+    </column>
+    <column id="215" parent="23" name="invokeOutParams">
+      <Position>8</Position>
+      <Comment>调用方法的出参</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="216" parent="23" name="invokeResult">
+      <Position>9</Position>
+      <Comment>调用结果</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="217" parent="23" name="invokeIp">
+      <Position>10</Position>
+      <Comment>发起调用的客户端IP</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="218" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="219" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="220" parent="24" name="mac">
+      <Position>2</Position>
+      <Comment>mac地址</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="221" parent="24" name="creattime">
+      <Position>3</Position>
+      <Comment>出厂时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="222" parent="24" name="state">
+      <Position>4</Position>
+      <Comment>状态</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="223" parent="24" name="manufacturer">
+      <Position>5</Position>
+      <Comment>所属厂商编号</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+    </column>
+    <column id="224" parent="24" name="uploadurl">
+      <Position>6</Position>
+      <Comment>二维码下载地址</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="225" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="226" parent="25" name="id">
+      <Position>1</Position>
+      <Comment>自增长id</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="227" parent="25" name="triggerTime">
+      <Position>2</Position>
+      <Comment>执行时间</Comment>
+      <DataType>bigint(20) unsigned|0</DataType>
+    </column>
+    <column id="228" parent="25" name="classId">
+      <Position>3</Position>
+      <Comment>控制类型</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="229" parent="25" name="orders">
+      <Position>4</Position>
+      <Comment>枚举值</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="230" parent="25" name="eaNumber">
+      <Position>5</Position>
+      <Comment>电器标号</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="231" parent="25" name="argument">
+      <Position>6</Position>
+      <Comment>执行参数</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="232" parent="25" name="mode">
+      <Position>7</Position>
+      <Comment>情景模式</Comment>
+      <DataType>smallint(4) unsigned|0</DataType>
+    </column>
+    <column id="233" parent="25" name="groupNumber">
+      <Position>8</Position>
+      <Comment>家庭组编号</Comment>
+      <DataType>int(20) unsigned|0</DataType>
+    </column>
+    <key id="234" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="235" parent="26" name="id">
+      <Position>1</Position>
+      <Comment>自增id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="236" parent="26" name="OperID">
+      <Position>2</Position>
+      <Comment>已开通的帐号名称</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="237" parent="26" name="OperPass">
+      <Position>3</Position>
+      <Comment>与帐号名称对应的密码</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="238" parent="26" name="AppendID">
+      <Position>4</Position>
+      <Comment>附加号码</Comment>
+      <DataType>int(20)|0</DataType>
+    </column>
+    <column id="239" parent="26" name="url">
+      <Position>5</Position>
+      <Comment>url地址</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="240" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="241" parent="27" name="id">
+      <Position>1</Position>
+      <Comment>自增主键</Comment>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="242" parent="27" name="HeadMessage">
+      <Position>2</Position>
+      <Comment>发送的头消息</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="243" parent="27" name="YZMessage">
+      <Position>3</Position>
+      <Comment>验证消息</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="244" parent="27" name="Messageone">
+      <Position>4</Position>
+      <Comment>消息</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="245" parent="27" name="Messagetwo">
+      <Position>5</Position>
+      <Comment>消息</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="246" parent="27" name="minuteTime">
+      <Position>6</Position>
+      <Comment>短信有效时间(分钟)</Comment>
+      <DataType>tinyint(1) unsigned|0</DataType>
+    </column>
+    <column id="247" parent="27" name="MessageNumber">
+      <Position>7</Position>
+      <Comment>消息编号</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="248" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="249" parent="28" name="id">
+      <Position>1</Position>
+      <Comment>自增id</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="250" parent="28" name="creationTime">
+      <Position>2</Position>
+      <Comment>创建时间</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="251" parent="28" name="triggerTime">
+      <Position>3</Position>
+      <Comment>执行时间</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="252" parent="28" name="things">
+      <Position>4</Position>
+      <Comment>任务详情</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="253" parent="28" name="rules">
+      <Position>5</Position>
+      <Comment>重复规则</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="254" parent="28" name="object">
+      <Position>6</Position>
+      <Comment>任务类型</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="255" parent="28" name="groupId">
+      <Position>7</Position>
+      <Comment>家庭组Id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="256" parent="28" name="orders">
+      <Position>8</Position>
+      <Comment>orders 枚举值</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="257" parent="28" name="groupId">
+      <ColNames>groupId</ColNames>
+    </index>
+    <key id="258" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="259" parent="28" name="xiaoitask_ibfk_1">
+      <ColNames>groupId</ColNames>
+      <RefSchemaName>xiaoi</RefSchemaName>
+      <RefTableName>familygroup</RefTableName>
+      <RefColNames>groupId</RefColNames>
+    </foreign-key>
+    <column id="260" parent="29" name="id">
+      <Position>1</Position>
+      <Comment>自增id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="261" parent="29" name="url">
+      <Position>2</Position>
+      <Comment>url地址</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="262" parent="29" name="urlRemark">
+      <Position>3</Position>
+      <Comment>url地址说明</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="263" parent="29" name="urlNumber">
+      <Position>4</Position>
+      <Comment>url编号</Comment>
+      <DataType>int(20)|0</DataType>
+    </column>
+    <column id="264" parent="29" name="other">
+      <Position>5</Position>
+      <Comment>其他</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="265" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

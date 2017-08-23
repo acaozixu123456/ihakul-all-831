@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e405d0bd-cffb-4724-9b07-63a6bc80c357" name="haku-main-1" url="http://42.159.242.77">
+        <fileTransfer host="42.159.242.77" port="5555" privateKey="C:\Users\Administrator\Desktop\haku_ras" rootFolder="/usr/tomcat7/apache-tomcat-7.0.54/webapps" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="5555" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="fe289f2c-7f84-4d3b-83ae-47aa42477cff" name="haku-main-2" url="http://139.219.227.214">
+        <fileTransfer host="139.219.227.214" port="5555" privateKey="C:\Users\Administrator\Desktop\haku_ras" rootFolder="/usr/tomcat7/apache-tomcat-7.0.54/webapps" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="5555" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="6e7e8551-8791-447b-980d-be977977392e" name="haku-web" url="http://42.159.205.21">
+        <fileTransfer host="42.159.205.21" port="5555" privateKey="C:\Users\Administrator\Desktop\haku_ras" rootFolder="/usr/tomcat7/apache-tomcat-7.0.54/webapps" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="5555" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

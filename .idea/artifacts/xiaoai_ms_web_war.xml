@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xiaoai-ms-web:war">
+    <output-path>$PROJECT_DIR$/xiaoai-ms-web/target</output-path>
+    <root id="archive" name="xiaoai-ms-web.war">
+      <element id="artifact" artifact-name="xiaoai-ms-web:war exploded" />
+    </root>
+  </artifact>
+</component>

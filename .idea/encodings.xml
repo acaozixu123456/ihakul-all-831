@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/ihakul_server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-CA" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-bigData" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-bigData-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-bigData-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-bigData-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-entity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-mina" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-ms-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoai-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xiaoaica" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xiaoai-bigData-service:war">
+    <output-path>$PROJECT_DIR$/xiaoai-bigData-service/target</output-path>
+    <root id="archive" name="xiaoai-bigData-service.war">
+      <element id="artifact" artifact-name="xiaoai-bigData-service:war exploded" />
+    </root>
+  </artifact>
+</component>

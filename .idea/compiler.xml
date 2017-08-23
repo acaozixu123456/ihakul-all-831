@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xiaoai" />
+        <module name="xiaoai-bigData-dao" />
+        <module name="xiaoai-bigData-interface" />
+        <module name="xiaoai-bigData-service" />
+        <module name="xiaoai-main-dao" />
+        <module name="xiaoai-main-entity" />
+        <module name="xiaoai-main-interface" />
+        <module name="xiaoai-main-mina" />
+        <module name="xiaoai-main-redis" />
+        <module name="xiaoai-main-service" />
+        <module name="xiaoai-ms-web" />
+        <module name="xiaoaica" />
+      </profile>
+      <profile name="Annotation profile for xiaoai-common" enabled="true">
+        <sourceOutputDir name="../../../eclipseWorkSpace/xiaoai-common/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../eclipseWorkSpace/xiaoai-common/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xiaoai-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="xiaoai" target="1.7" />
+      <module name="xiaoai-bigData" target="1.7" />
+      <module name="xiaoai-bigData-dao" target="1.7" />
+      <module name="xiaoai-bigData-interface" target="1.7" />
+      <module name="xiaoai-bigData-service" target="1.7" />
+      <module name="xiaoai-CA" target="1.7" />
+      <module name="xiaoai-common" target="1.7" />
+      <module name="xiaoai-main" target="1.7" />
+      <module name="xiaoai-main-dao" target="1.7" />
+      <module name="xiaoai-main-entity" target="1.7" />
+      <module name="xiaoai-main-interface" target="1.7" />
+      <module name="xiaoai-main-mina" target="1.7" />
+      <module name="xiaoai-main-redis" target="1.7" />
+      <module name="xiaoai-main-service" target="1.7" />
+      <module name="xiaoai-ms-web" target="1.7" />
+      <module name="xiaoai-parent" target="1.7" />
+      <module name="xiaoaica" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

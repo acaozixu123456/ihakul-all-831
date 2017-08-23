@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ihakul_server/xiaoai.iml" filepath="$PROJECT_DIR$/ihakul_server/xiaoai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-parent/xiaoai-CA.iml" filepath="$PROJECT_DIR$/xiaoai-parent/xiaoai-CA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-bigData/xiaoai-bigData.iml" filepath="$PROJECT_DIR$/xiaoai-bigData/xiaoai-bigData.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-bigData-dao/xiaoai-bigData-dao.iml" filepath="$PROJECT_DIR$/xiaoai-bigData-dao/xiaoai-bigData-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-bigData-interface/xiaoai-bigData-interface.iml" filepath="$PROJECT_DIR$/xiaoai-bigData-interface/xiaoai-bigData-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-bigData-service/xiaoai-bigData-service.iml" filepath="$PROJECT_DIR$/xiaoai-bigData-service/xiaoai-bigData-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-common/xiaoai-common.iml" filepath="$PROJECT_DIR$/xiaoai-common/xiaoai-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-dao/xiaoai-main-dao.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-dao/xiaoai-main-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-entity/xiaoai-main-entity.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-entity/xiaoai-main-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-interface/xiaoai-main-interface.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-interface/xiaoai-main-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-mina/xiaoai-main-mina.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-mina/xiaoai-main-mina.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-redis/xiaoai-main-redis.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-redis/xiaoai-main-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-main/xiaoai-main-service/xiaoai-main-service.iml" filepath="$PROJECT_DIR$/xiaoai-main/xiaoai-main-service/xiaoai-main-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoai-ms-web/xiaoai-ms-web.iml" filepath="$PROJECT_DIR$/xiaoai-ms-web/xiaoai-ms-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoaica/xiaoaica.iml" filepath="$PROJECT_DIR$/xiaoaica/xiaoaica.iml" />
+    </modules>
+  </component>
+</project>
