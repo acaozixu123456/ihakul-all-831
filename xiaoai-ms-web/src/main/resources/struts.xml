@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- 开启使用开发模式，详细错误提示 -->
+  <!--   <constant name="struts.devMode" value="true"/> -->
+
+    <!-- 关闭使用开发模式，关闭错误提示 -->
+    <constant name="struts.devMode" value="false"/>
+    
+    <!--设置utf-8格式  -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    
+    <!-- 设置最大上传为150M -->
+    <constant name="struts.multipart.maxSize" value="150000000"/>
+    <!-- 将对象交给spring管理 -->
+    <constant name="struts.objectFactory" value="spring"/>
+    <!-- 默认后缀名 -->
+    <constant name="struts.action.extension" value="do,action"/>
+    <package name="defau" namespace="/" extends="json-default,struts-default">
+    	<!-- 拦截器 -->
+    	<interceptors>
+    		<interceptor name="adminInterceptor" class="com.xiaoai.ms.web.interceptors.AdminInterceptor"/>
+    		<interceptor name="LoginInterceptor" class="com.xiaoai.ms.web.interceptors.LoginInterceptor"/>
+    		 <!-- 定义公共的拦截器链，在action标签中只需要引用拦截器链 -->  
+    		 <!-- 后台的增删改查验证 -->
+        	<interceptor-stack name="defaultinter">  
+            	<interceptor-ref name="defaultStack"/>
+            	<interceptor-ref name="LoginInterceptor"/> 
+            	<interceptor-ref name="adminInterceptor"/>
+        	</interceptor-stack>
+				<!-- 后台的查询验证 -->
+			<interceptor-stack name="simpleAdminPrivilege">  
+            	<interceptor-ref name="defaultStack"/>  
+            	<interceptor-ref name="LoginInterceptor"/> 
+        	</interceptor-stack>
+        	
+		</interceptors>
+    	<!-- 定义默认的拦截器栈，会自动注册到action中 , 配置struts2框架运行时，默认执行自定义拦截器栈 -->  
+    	<default-interceptor-ref name="defaultinter"/>
+
+		<!-- 全局异常处理 START-->
+		<!-- <global-results>
+             <result name="errHandler" type="chain">
+                 <param name="actionName">errorProcessor</param>
+             </result>
+         </global-results>
+		<global-exception-mappings>
+             <exception-mapping result="errHandler" exception="java.lang.Exception">
+             </exception-mapping>
+        </global-exception-mappings>
+		
+         <action name="errorProcessor" class="errorProcess" method="execute">
+			 <interceptor-ref name="defaultStack"></interceptor-ref>
+			 <result type="json"></result>
+         </action> -->
+         <!-- 全局异常处理END -->
+         
+    	 <!--小艾后台管理登入  -->
+    	<!-- 管理员 -->
+    	<!-- 管理员登入 -->
+    	<!--  name jsp调用 ; class  java中的注解调用 ...Action  @Controller("adminAction"); method 使用方法 -->
+    	<action name="loginAction" class="adminAction" method="adminLogin">
+    		<!-- <result name="success">/jsp/main.jsp</result> -->
+    		<!-- <result name="error">/jsp/login.jsp</result> -->
+    		<result type="json"/>
+    		<!--  添加defaultStack保证不执行拦截器   -->
+            <interceptor-ref name="defaultStack"/>
+            
+            <!-- <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">person</param>
+            </result>   --> 
+    	</action>
+    	
+    	<!-- 查询所有管理员-->
+    	<action name="showAllAdminAction" class="adminAction" method="selectAlladmin">
+    		<result name="success" >/jsp/admin_main.jsp</result>
+    		 <!-- 设置登录拦截器 -->
+    		 <!-- 添加defaultStack保证不执行拦截器 -->  
+            <interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	
+    	<!-- 添加 -->
+    	<action name="insertAdmin" class="adminAction" method="insertAdmin">
+    		<result name="success">/jsp/login.jsp</result>
+    		<result name="error">/jsp/login.jsp</result>
+    		<interceptor-ref name = "tokenSession" />
+    		<result name="invalid.token">/jsp/message.jsp</result>
+    		<!-- <interceptor-ref name="LoginInterceptor"></interceptor-ref> -->    
+    		<interceptor-ref name="defaultStack"/>
+    	</action>
+    	
+    	<!-- 删除 -->
+    	<action name="deleteAdmin" class="adminAction" method="deleteAdmin">
+    		<result name="success" type="json"/>
+    		<interceptor-ref name="defaultinter"/>
+    	</action>
+    	
+    	<!-- 根据id查询 -->
+    	<action name="getAdmin" class="adminAction" method="selectAdminByid">
+    		<result name="success">/jsp/admin_edit.jsp</result>
+    		<result name="error">/jsp/admin_main.jsp</result>
+    		<interceptor-ref name="defaultinter"/>
+    	</action>
+    	
+    	<!-- 根据管理员用户名查询 -->
+    	<action name="getAdminByaname" class="adminAction" method="selectAdminByan">
+    		<result type="json"/>
+ 			<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 修改 -->
+    	<action name="updateAdmin" class="adminAction" method="updateAdminByid">
+    		<result name="success" >/jsp/admin_main.jsp</result>
+    		<result name="error">/jsp/admin_edit.jsp</result>
+    		<interceptor-ref name="defaultinter"/>
+    	</action>
+	 
+    	
+    	<!-- 家庭组 -->
+    	<!-- 按条件查询 -->
+    	<action name="showAllFanily" class="familygroupAction" method="selectAllFamily">
+    		<result name="success" >/jsp/familygroup.jsp</result>
+    		<result name="error"  >/jsp/familygroup.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	<!-- 删除 -->
+    	<action name="deleteFamily" class="familygroupAction" method="delete">
+    		<result name="success" type="json" />
+         <interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 添加 -->
+    	<action  name="addFamily" class="familygroupAction" method="insertFamily">
+    		<result name="success"  >/jsp/familygroup.jsp</result>
+    		<result name="error" >/jsp/familygroup.jsp</result>
+       		<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 根据id查询 -->
+    	<action  name="selectFami" class="familygroupAction" method="selectFgByid">
+    		<result name="success">/jsp/familygroup_infor.jsp</result>
+    		<result name="error">/jsp/familygroup.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	<!-- 修改 -->
+    	<action  name="updateFamily" class="familygroupAction" method="updateFamily">
+    		<result name="success">/jsp/familygroup.jsp</result>
+    		<result name="error">/jsp/familygroup_infor.jsp</result>
+       		<interceptor-ref name="defaultinter"/>
+    	</action>
+    	
+    	<!-- 根据名字查询 -->
+    	<action  name="findFamily" class="familygroupAction" method="selectFamilyByname">
+    		<result name="success" type="json">/jsp/user_management.jsp</result>
+    		<result name="error" type="json">/jsp/user_management.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+		<!-- 渲染小分布图 -->
+		<action  name="echartFamilyGroup" class="familygroupAction" method="echartFamilyGroup">
+			<result name="success" type="json">/jsp/familygroup.jsp</result>
+			<result name="error" type="json">/jsp/familygroup.jsp</result>
+			<interceptor-ref name="simpleAdminPrivilege"/>
+		</action>
+
+
+    					      <!--【终端小艾】 -->
+    	<!-- 根据编号查询 -->
+    	<action name="getXiaoi" class="xiaoiAction" method="getXiaoi">
+    		<result name="success" type="json">/jsp/familygroup.jsp</result>
+    		<result name="error" type="json">/jsp/familygroup.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	<!-- 条件分页查询 -->
+    	<action name="findAllXiaoi" class="xiaoiAction" method="findAll">
+    		<result name="success" >/jsp/xiaoai.jsp</result>
+    		<result name="error" >/jsp/xiaoai.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	<!-- 删除 -->
+    	<action name="deleteXiaoi" class="xiaoiAction" method="deleteXiaoi">
+    		<result name="success" >/jsp/xiaoai.jsp</result>
+    		<result name="error" >/jsp/xiaoai.jsp</result>
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 根据id查询 -->
+    	<action name="selectXiaoiByid" class="xiaoiAction" method="getXiaoiByid">
+    		<result name="success" >/jsp/xiaoai_edit.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	<!-- 修改 -->
+    	<action name="updateXiaoi" class="xiaoiAction" method="updateXiaoi">
+    		<result name="success" >/jsp/xiaoai.jsp</result>	
+    		<result name="error" >/jsp/xiaoai.jsp</result>	
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 添加 -->
+    	<action name="addXiaoi" class="xiaoiAction" method="addXiaoai">
+    		<result name="success" >/jsp/xiaoai.jsp</result>	
+    		<result name="error" >/jsp/xiaoai.jsp</result>	
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	
+    	<!-- 初始化MAC地址准备方法 -->
+    	<action name="preInitMac" class="xiaoiAction" method="preInitMac">
+    		<result name="success" >/jsp/xiaoi_mac.jsp</result>	
+    		<result name="error" >/jsp/xiaoai.jsp</result>	
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 初始化MAC地址 -->
+    	<action name="initXiaoiMac" class="xiaoiAction" method="initXiaoiMac">
+    		<result name="success" >/jsp/xiaoi_mac.jsp</result>	
+    		<result name="error" >/jsp/xiaoai.jsp</result>	
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	<!-- 打印二维码 -->
+    	<!--<action name="printDevice" class="xiaoiAction" method="printDevice">
+    		<result name="success" >/jsp/xiaoi_mac.jsp</result>	
+    		<result name="error" >/jsp/xiaoai.jsp</result>	
+        	<interceptor-ref name="defaultinter"/>
+    	</action>-->
+    	
+    
+    						<!-- 【用户管理】 -->
+    	<!-- 条件查询 -->
+    	<action name="findAllUsers" class="usersAction" method="findAll">
+    		<result name="success" >/jsp/user_management.jsp </result>
+    		<result name="error" >/jsp/user_management.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+    	</action>
+    	
+    	<!-- 删除用户 -->
+    	<action name="deleteUsers" class="usersAction" method="deleteUsers">
+    		<result name="success" type="json" >/jsp/user_management.jsp </result>
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+ 		
+ 		<!-- 添加用户 -->
+ 		<action name="insertUsers" class="usersAction" method="insertUsers"> 
+ 			<result name="success">/jsp/user_management.jsp</result>
+ 			<result name="error">/jsp/user_management.jsp</result>
+        	<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		<!-- 根据用户id查询 -->
+ 		<action name="getUser" class="usersAction" method="getUser">
+ 			<result name="success">/jsp/user_edit.jsp</result>
+ 			<result name="error">/jsp/user_management.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 修改 -->
+ 		<action name="updateUser" class="usersAction" method="updateUsers"> 
+ 			<result name="success" >/jsp/user_management.jsp</result>
+ 			<result name="error" >/jsp/user_management.jsp</result>
+        	<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		
+ 		
+ 		
+ 							<!-- 【家电管理】 -->
+ 		<!-- 条件查询 -->
+ 		<action name="houseHoldfind" class="houseHoldAction" method="findAll">
+ 			<result name="success" >/jsp/household_appliances.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		
+ 		<action name="findAllhhold" class="houseHoldAction" method="findAll">
+ 			<result name="success" >/jsp/house_logbookquery.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>  
+ 		</action>
+ 		
+ 		<action name="findHouseHold" class="houseHoldAction" method="findAll"> 
+ 			<result name="success" type="json" >/jsp/household.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>  
+ 		</action>
+ 		<!-- 删除 -->
+ 		<action name="deleteHousehold" class="houseHoldAction" method="detelete" >
+ 			<result name="success"  type="json">/jsp/household.jsp</result>
+        	<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		<!-- 根据id查询 -->
+ 		<action name="shullHousehold" class="houseHoldAction" method="selectByid">
+ 			<result name="success"  >/jsp/house_xianqing.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		
+ 		<action name="getHousehold" class="houseHoldAction" method="selectByid" >
+ 			<result name="success"  >/jsp/updateHousehold.jsp</result>
+        	<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 修改 -->
+ 		<action name="updateHousehold" class="houseHoldAction" method="update" >
+ 			<result name="success"  >/jsp/household.jsp</result>
+ 			<result name="error"  >/jsp/household.jsp</result>
+        	<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		
+ 							<!-- 【工作日志】 -->
+ 		<!-- 查询 -->
+ 		<action name="showXiaolog" class="xiaoilogAction" method="select">
+ 			<result name="success">/jsp/xiaoilog.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 导出报表 -->
+ 		<action name="exportExcell" class="xiaoilogAction" method="exportExcel">
+ 			<result name="success" >/jsp/logbook.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 添加 -->
+ 		<!--<action name="addXiaolog" class="xiaoilogAction" method="exportExcel">
+ 			<result  type="json"></result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>-->
+ 		
+ 		
+ 							<!-- 【版本管理】 -->
+ 		<!-- 查询 -->
+ 		<action name="findVersion" class="versionAction" method="findAllVersion">
+ 			<result name="success">/jsp/versions_management.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 添加 -->
+ 		<action name="upload" class="versionAction" method="uploadVersion">
+ 			<result name="success">/jsp/versions_management.jsp</result>
+ 			<result name="error">/jsp/versions_management.jsp </result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		<!-- 根据id查询 -->
+ 		<action name="findVersionByid" class="versionAction" method="findVersionByid">
+ 			<result name="success">/jsp/versions_edit.jsp</result>
+ 			<result name="error">/jsp/error.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 修改 -->
+ 		<action name="update" class="versionAction" method="updateVersion">
+ 			<result name="success">/jsp/versions_management.jsp</result>
+ 			<result name="error">/jsp/error.jsp</result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		<!-- 删除 -->
+ 		<action name="deleteVersion" class="versionAction" method="deleteVersion">
+ 			<result name="success" type="json">/jsp/versions_management.jsp</result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		
+ 		<!-- 判段版本号是否已使用 -->
+ 		<action name="queryNumber" class="versionAction" method="queryNumber">
+ 			<result type="json"/>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>	
+ 		</action>
+ 		
+ 		<!-- 判段版本号在改包名下是否存在 -->
+ 		<action name="queryPackageNumber" class="versionAction" method="queryPackageNumber">
+ 			<result type="json"/>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>	
+ 		</action>
+ 		
+ 		<!-- 终端更新接口 -->
+ 		<action name="queryverNumber" class="versionAction" method="appQuary">
+ 			<result type="json"/>
+ 			<interceptor-ref name="defaultStack"/>	
+ 		</action>
+ 		
+ 		
+ 		
+ 							<!-- 【数据字典】-->
+ 		<!-- 查询字典数据 -->
+ 		<action name="queryHouseUser" class="datadicAction" method="find">
+ 			<result name="success">/jsp/homeuser_query.jsp</result>
+ 			<result name="effor">/jsp/homeuser_query.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 添加字典数据 -->
+ 		<action name="insertDatadictroy" class="datadicAction" method="insert">
+ 			<result name="success">/jsp/datadictionary_main.jsp</result>
+ 			<result name="error">/jsp/datadictionary_insert.jsp</result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		<!-- 分页条件查询 -->
+ 		<action name="paginFindDatadic" class="datadicAction" method="pagingFind">
+ 			<result name="success">/jsp/datadictionary_main.jsp</result>
+ 			<result name="error">/jsp/datadictionary_main.jsp</result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		<!-- 删除数据字典 -->
+ 		<action name="deleteDatadictory" class="datadicAction" method="delete">
+ 			<result name="success">/jsp/datadictionary_main.jsp</result>
+ 			<result name="error">/jsp/datadictionary_main.jsp </result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		
+ 		
+ 		
+ 							<!-- 【频道信息】 -->
+ 		<!-- 分页查询频道信息
+ 		<action name="appfindChannel" class="channelAction" method="query">
+ 			<result type="json"></result>
+ 			<interceptor-ref name="simpleAdminPrivilege"/>
+ 		</action>
+ 		&lt;!&ndash; 添加频道信息 &ndash;&gt;
+ 		<action name="appaddChannel" class="channelAction" method="insert">
+ 			<result type="json"></result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+ 		&lt;!&ndash; 删除频道信息 &ndash;&gt;
+ 		<action name="appdeleteChannel" class="channelAction" method="delete">
+ 			<result type="json"></result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>
+		&lt;!&ndash; 修改频道信息 &ndash;&gt;
+		<action name="appupdateChannel" class="channelAction" method="update">
+ 			<result type="json"></result>
+ 			<interceptor-ref name="defaultinter"/>
+ 		</action>-->
+    
+   									
+         <!--第三方交互接口  -->
+        <!-- 单条短信推送-->
+    <!--	<action name="httpgetSMS" class="httpSms" method="oneTOSMS">
+    		<result name="success" type="json" ></result>	
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+    	</action>
+    	
+    	&lt;!&ndash;多条短信推送  &ndash;&gt;
+    	<action name="httppushSMS" class="httpSms" method="moreTOSMS">
+    		<result name="success" type="json" ></result>	
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+    	</action>-->
+    
+    	<!--家电个数echart图表生成  -->
+    	<action name="echartHouseHold" class="houseHoldAction" method="echart">
+    		<result name="success" type="json" />
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+    	
+    	<!--家电品牌echart图表生成  -->
+    	<action name="echart2HouseHold" class="houseHoldAction" method="echart2">
+    		<result name="success" type="json" />
+        	<interceptor-ref name="defaultinter"/>
+    	</action>
+   </package>  
+</struts>
